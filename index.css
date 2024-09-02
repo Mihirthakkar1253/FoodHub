@@ -27,8 +27,16 @@
 }
 .card{
     border: 1px solid black;
-    height: 100%;
+    height: 350px;
     width: 200px;
     padding: 5px;
     margin: 10px;
+}
+
+.restcard{
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    flex-wrap: wrap;
+
 }
