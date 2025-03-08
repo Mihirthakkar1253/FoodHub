@@ -4,7 +4,11 @@ import ReactDOM from 'react-dom/client';
 import Header from "./components/Header";
 import Body from './components/Body';
 import Footer from "./components/Footer";
-import {createBrowserRouter,RouterProvider} from "react-router-dom";
+import {createBrowserRouter,RouterProvider,Outlet} from "react-router-dom";
+import About from "./components/About"
+import Contact from "./components/Contact"
+import RestaurantMenu from "./components/RestaurantMenu"
+import Cart from "./components/Cart"
 
 
 // import ChatBot from 'react-simple-chatbot';
@@ -93,7 +97,7 @@ const AppLayout=()=>{
     return (
         <>
         <Header/>
-        <Body/>
+        <Outlet/>
         <Footer/>
            {/*
     Header 
@@ -129,8 +133,29 @@ const AppLayout=()=>{
 const appRouter=createBrowserRouter([
     {
         path:'/',
-        element:<AppLayout/>
-
+        element:<AppLayout/>,
+        children:[
+            {
+                path: "/",
+                element: <Body/>,
+              },
+              {
+                path: "/about",
+                element: <About/>,
+              },
+              {
+                path: "/contact",
+                element: <Contact/>,
+              },
+              {
+                path: "/cart",
+                element: <Cart/>,
+              },
+              {
+                path:'/restaurant/:id',
+                element:<RestaurantMenu />
+              }
+        ]
     }
 ])
 

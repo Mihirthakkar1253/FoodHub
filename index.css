@@ -34,11 +34,19 @@
 .card{
     border: 1px solid black;
     height: 350px;
-    width: 200px;
+    width: 290px;
     padding: 5px;
     margin: 10px;
+    border-radius: 10px;
+   
 }
-
+.card:hover {
+    box-shadow: 4px 4px 20px black;
+}
+.searchInput:focus {
+    width: 300px;
+    border-color: black;
+}
 .restcard{
     display: flex;
     /* justify-content: center; */
@@ -50,8 +58,23 @@
     margin: 10px;
     padding: 5px;
     width: 200px;
+    border-radius: 7px;
 }
 .search-btn{
     padding: 5px;
+    border-radius: 7px;
 
+
+}
+@media (max-width: 600px) {
+    .nav-items > ul {
+      flex-wrap: wrap;
+    }
+
+  }
+
+  .menu {
+    width: 60%;
+    margin: 20px auto;
+    min-height: 100vh;
 }

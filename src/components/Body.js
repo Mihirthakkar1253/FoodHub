@@ -24,7 +24,7 @@ const Body = () => {
   }, []);
   async function getRestuarants() {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0759837&lng=72.8776559&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.02760&lng=72.58710&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const jsonData = await data.json();
     console.log(
@@ -32,22 +32,16 @@ const Body = () => {
         ?.restaurants
     );
     setAllRestaurants(
-      jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+      jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
-    allRestaurants.push(
-      jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
+    
     console.log(jsonData);
     setFilteredRestaurants(
-      jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+      jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
-    filteredRestaurants.push(
-      jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
+   
   } //if my restuarant empty=>shimmer UI
   //if resturant has data then load actual UI
 

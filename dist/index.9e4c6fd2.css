@@ -11,7 +11,9 @@
 }
 
 .nav-items > ul > li {
-  padding: 10px;
+  margin: 5px;
+  padding: 5px;
+  list-style-type: none;
 }
 
 .logo {
@@ -26,14 +28,48 @@
 
 .card {
   border: 1px solid #000;
-  width: 200px;
+  border-radius: 10px;
+  width: 290px;
   height: 350px;
   margin: 10px;
   padding: 5px;
 }
 
+.card:hover {
+  box-shadow: 4px 4px 20px #000;
+}
+
+.searchInput:focus {
+  border-color: #000;
+  width: 300px;
+}
+
 .restcard {
   flex-wrap: wrap;
   display: flex;
+}
+
+.searchInput {
+  border-radius: 7px;
+  width: 200px;
+  margin: 10px;
+  padding: 5px;
+}
+
+.search-btn {
+  border-radius: 7px;
+  padding: 5px;
+}
+
+@media (width <= 600px) {
+  .nav-items > ul {
+    flex-wrap: wrap;
+  }
+}
+
+.menu {
+  width: 60%;
+  min-height: 100vh;
+  margin: 20px auto;
 }
 /*# sourceMappingURL=index.9e4c6fd2.css.map */
