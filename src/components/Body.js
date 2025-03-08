@@ -1,20 +1,96 @@
 import { RestruantCard } from "./RestruantCard";
-import {restaurantList} from '../utils/contants'
-const Body=()=>{
-    return (
-        <div className='restcard'>
-        {restaurantList.map((rest) => (
-          <RestruantCard
-            key={rest.data.id}  // It's important to include a unique key prop when rendering lists in React.
-            name={rest.data.name}
-            cloudinaryImageId={rest.data.cloudinaryImageId}
-            cuisines={rest.data.cuisines}
-            avgRating={rest.data.avgRating}
-          />
-        ))}
-      </div>
+import { restaurantList } from "../utils/contants";
+import Shimmer from "./Shimmer";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
-    )
-}
+const Body = () => {
+  const [searchText, setSearchText] = useState("");
+  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  const [allRestaurants, setAllRestaurants] = useState([]);
+
+  const [searchClicked, setSearchClicked] = useState(false);
+  function filterData(searchText, restaurants) {
+    console.log("-----", restaurants);
+    const filter = restaurants.filter((restaurant) =>
+      restaurant?.info?.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+    console.log("---filter--", filter);
+
+    return filter;
+  }
+  useEffect(() => {
+    getRestuarants();
+  }, []);
+  async function getRestuarants() {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0759837&lng=72.8776559&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
+    const jsonData = await data.json();
+    console.log(
+      jsonData?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
+    setAllRestaurants(
+      jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
+    allRestaurants.push(
+      jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
+    console.log(jsonData);
+    setFilteredRestaurants(
+      jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
+    filteredRestaurants.push(
+      jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
+  } //if my restuarant empty=>shimmer UI
+  //if resturant has data then load actual UI
+
+  return allRestaurants.length === 0 ? (
+    <Shimmer />
+  ) : (
+    <>
+      <input
+        type="text"
+        placeholder="search..."
+        value={searchText}
+        onChange={(e) => {
+          setSearchText(e.target.value);
+        }}
+        className={"searchInput"}
+      />
+      <button
+        className="search-btn"
+        onClick={() => {
+          //need to filter a data
+          const data = filterData(searchText, allRestaurants);
+          setFilteredRestaurants(data);
+        }}
+      >
+        search
+      </button>
+
+      <div className="restcard">
+        {filteredRestaurants.length === 0 ? (
+          <h1> No restuarant found for this filter</h1>
+        ) : (
+          filteredRestaurants.map((restaurant) => (
+            <Link
+              key={restaurant.info.id}
+              to={"/restaurant/" + restaurant.info.id}
+            >
+              <RestruantCard resData={restaurant} />
+            </Link>
+          ))
+        )}
+      </div>
+    </>
+  );
+};
 
 export default Body;

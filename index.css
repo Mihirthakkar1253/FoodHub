@@ -1,5 +1,5 @@
 #root{
-    /* background-color: red; */
+    /* background-color: red;   */
 }
 .header{
     display: flex;
@@ -10,9 +10,15 @@
 .nav-items > ul{
     display: flex;
     list-style-type: none; 
+    /* margin: 10px; */
+    /* border: 1px solid black; */
+    
+
 }
 .nav-items >ul > li{
-    padding:10px ;
+    padding:5px ;
+    margin: 5px;
+    list-style-type: none; 
 }
 
 .logo{
@@ -38,5 +44,14 @@
     /* justify-content: center; */
     /* align-items: center; */
     flex-wrap: wrap;
+
+}
+.searchInput{
+    margin: 10px;
+    padding: 5px;
+    width: 200px;
+}
+.search-btn{
+    padding: 5px;
 
 }

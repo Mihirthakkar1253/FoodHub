@@ -1,8 +1,11 @@
+import {Link} from 'react-router-dom'
+
+
 export const Title=()=>(
 
     <div>
 
-        <img className='logo' alt="logo" src="https://yt3.googleusercontent.com/ikMbQJ70eQ0IVfr1OmC6UKxx1niHm0GOeEltnhld5fgglugwMG1iXYSOOxCnbOm7bDojbqILww=s900-c-k-c0x00ffffff-no-rj"></img>
+        <img className='logo' alt="logo" src="https://brand.foodhub.com/images/png/foodhub_vertical_new.png"></img>
     </div>
    );
    const Header=()=>{
@@ -12,11 +15,21 @@ export const Title=()=>(
          <Title></Title>
          <div className="nav-items">
                <ul>
-                 <li>Home</li>
-                 <li>About</li>
-                 <li>Contact</li>
-                 
-                 <li>Cart</li>
+               <li> <Link to='/'> Home
+               </Link>
+               </li>
+                
+               <li> <Link to='/about'>
+                    About
+                    </Link></li>
+                    <li>   <Link to="/contact">
+                 Contact
+
+                    </Link></li>
+                    <li> <Link to="/cart">
+
+                 Cart
+                 </Link></li>
 
 
                </ul>
