@@ -9,7 +9,7 @@ import About from "./components/About"
 import Contact from "./components/Contact"
 import RestaurantMenu from "./components/RestaurantMenu"
 import Cart from "./components/Cart"
-
+import Profile from './components/Profile'
 
 // import ChatBot from 'react-simple-chatbot';
 // import { ThemeProvider } from 'styled-components';
@@ -134,6 +134,7 @@ const appRouter=createBrowserRouter([
     {
         path:'/',
         element:<AppLayout/>,
+        errorElement:<Error/>,
         children:[
             {
                 path: "/",
@@ -142,6 +143,12 @@ const appRouter=createBrowserRouter([
               {
                 path: "/about",
                 element: <About/>,
+                children:[
+                  {
+                    path:'profile',
+                    element:<Profile/>
+                  }
+                ]
               },
               {
                 path: "/contact",

@@ -4,8 +4,9 @@
 .header{
     display: flex;
     justify-content: space-between;
-    margin: 10px;
+    margin-bottom: 40px;
   border: 1px solid black;
+  box-shadow: 10px 10px 800px  gray;
 }
 .nav-items > ul{
     display: flex;
@@ -20,6 +21,15 @@
     margin: 5px;
     list-style-type: none; 
 }
+.nav-items a {
+    text-decoration: none;
+    color: inherit;
+  }
+  .nav-items a:hover {
+    color:rgb(173, 86, 86);
+    transform: translateY(-3px); /* Moves link slightly up */
+    box-shadow: 10px 10px 60px rgba(241, 240, 240, 0.6); /* Adds a subtle shadow */
+  }
 
 .logo{
     width: 100px;
@@ -77,4 +87,9 @@
     width: 60%;
     margin: 20px auto;
     min-height: 100vh;
+}
+
+.heading1{
+    /* border: 1px solid black; */
+    margin-left: 10px;
 }

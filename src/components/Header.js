@@ -5,7 +5,8 @@ export const Title=()=>(
 
     <div>
 
-        <img className='logo' alt="logo" src="https://brand.foodhub.com/images/png/foodhub_vertical_new.png"></img>
+       <Link to="/"> <img className='logo' alt="logo" src="https://brand.foodhub.com/images/png/foodhub_vertical_new.png"></img>
+       </Link>
     </div>
    );
    const Header=()=>{
